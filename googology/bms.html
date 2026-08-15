@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+		body {
+				background-image: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), url("metal001.jpg");
+				min-height: 100dvh;
+				width: 100%;
+			}
+			th, td {
+				padding-right: 15px;
+				text-align: left;
+			}
+		</style>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="">
+		<script src="https://cdn.tailwindcss.com"></script>
+	</head>
+	<body style="font-family: serif;" class="bg-slate-400 text-white p-6">
+		<a style="position: relative; z-index: 999;" class="text-blue-600 underline hover:text-blue-800 visited:text-purple-600" href="/googology">(Back to homepage)</a><br><br>
+		<img style="margin-top: -50px; height: 150px;" src="under-construction.gif" alt="Under construction"></img>
+		<img style="margin-top: -60px;" src="W-BMS.png" alt="&Omega;-BMS"></img>
+		<p>
+			&Omega;-BMS is my extension of Bashicu Matrix System to transfinitely many rows, and denoted as &alpha;-BMS, where &alpha; is an ordinal. I designed it
+			so for finite N, N-BMS is equivalent to N-row BMS, and the smallest matrix in &omega;-BMS gives the ordinal Lim(BMS).<br><br>
+			Bashicu Matrix System is a matrix system made by Bashicu. Examples inlcude:<br><br>
+		</p>
+		<table>
+			<tr>
+				<th>Expression</th>
+				<th>Ordinal</th>
+			</tr>
+			<tr>
+				<td>(empty)</td>
+				<td>0</td>
+			</tr>
+			<tr>
+				<td>(0)</td>
+				<td>1</td>
+			</tr>
+			<tr>
+				<td>(0)(1)</td>
+				<td>&omega;</td>
+			</tr>
+			<tr>
+				<td>(0)(1)(2)</td>
+				<td>&omega;<sup>&omega;</sup></td>
+			</tr>
+			<tr>
+				<td>(0,0)(1,1)</td>
+				<td>&epsilon;<sub>0</sub></td>
+			</tr>
+			<tr>
+				<td>(0,0)(1,1)(2,1)</td>
+				<td>&zeta;<sub>0</sub></td>
+			</tr>
+			<tr>
+				<td>(0,0)(1,1)(2,1)(3)</td>
+				<td>&phi;(&omega;,0)</td>
+			</tr>
+			<tr>
+				<td>(0,0)(1,1)(2,1)(3,1)</td>
+				<td>&Gamma;<sub>0</sub></td>
+			</tr>
+			<tr>
+				<td>(0,0)(1,1)(2,1)(3,1)(4)</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;<sup>&omega;</sup></sup>) (Small Veblen ordinal)</td>
+			</tr>
+			<tr>
+				<td>(0,0)(1,1)(2,1)(3,1)(4,1)</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;<sup>&Omega;</sup></sup>) (Large Veblen ordinal)</td>
+			</tr>
+			<tr>
+				<td>(0,0)(1,1)(2,2)</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sub>2</sub>) (BHO)</td>
+			</tr>
+			<tr>
+				<td>(0,0)(1,1)(2,2)(3,3)</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sub>3</sub>)</td>
+			</tr>
+			<tr>
+				<td>(0,0,0)(1,1,1)</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sub>&omega;</sub>) (Buchholz's ordinal)</td>
+			</tr>
+		</table>
+		<p>
+			(With respect to Buchholz's OCF.)<br><br>
+			Analysis beyond (0,0,0)(1,1,1) is an open problem. Also, from now on, I'll omit unnecessary 0s.<br><br>
+			The Limit of BMS can't really be written in any other way besides Lim(BMS). It's fundamental sequence is (), (0)(1), (0)(1,1), (0)(1,1,1), ...<br>
+			If I notate N 1s as 1<sup>N</sup>, then we obtain the following fundamental sequence; (), (0)(1), (0)(1<sup>2</sup>), (0)(1<sup>3</sup>),
+			(0)(1<sup>4</sup>), ... which I can simplify to Lim(BMS)[N] = (0)(1<sup>N</sup>).<br>
+			If I define (0)(1<sup>&alpha;</sup>)[N] as (0)(1<sup>&alpha;[N]</sup>) for a limit ordinal &alpha;, then (0)(1<sup>&omega;</sup>) is exactly
+			Lim(BMS).<br>
+			I can also define (0)(1<sup>&alpha;+1</sup>)[N] as (0)(1<sup>&alpha;</sup>)(2<sup>&alpha;</sup>)...(N<sup>&alpha;</sup>), which means that
+			(0)(1<sup>&alpha;+1</sup>) = Lim(&alpha;-BMS).<br>
+			Those are the only two new rules, otherwise it expands like BMS.
+		</p>
+		<img src="y-seq.png" alt="Analysis with Y-Sequence"></img>
+		<p>
+			HUGE HUGE HUGE thanks to my friend Vee. I personally don't know Y Sequence, so I'll analyze more later, when I do learn it.
+		</p>
+		<table>
+			<tr>
+				<th>Expression</th>
+				<th>Y Sequence</th>
+			</tr>
+			<tr>
+				<td>(0)(1<sup>&omega;</sup>)</td>
+				<td>Y(1,3)</td>
+			</tr>
+			<tr>
+				<td>(0)(1<sup>&omega;</sup>)(1)</td>
+				<td>Y(1,3,2)</td>
+			</tr>
+			<tr>
+				<td>(0)(1<sup>&omega;</sup>)(1)(2)</td>
+				<td>Y(1,3,2,3)</td>
+			</tr>
+			<tr>
+				<td>(0)(1<sup>&omega;</sup>)(1)(2,1)</td>
+				<td>Y(1,3,2,4)</td>
+			</tr>
+			<tr>
+				<td>(0)(1<sup>&omega;</sup>)(1)(2,1,1)</td>
+				<td>Y(1,3,2,4,8)</td>
+			</tr>
+			<tr>
+				<td>(0)(1<sup>&omega;</sup>)(1)(2,1<sup>&omega;</sup>)</td>
+				<td>Y(1,3,2,5)</td>
+			</tr>
+			<tr>
+				<td>(0)(1<sup>&omega;</sup>)(1,1)</td>
+				<td>Y(1,3,2,5,4)</td>
+			</tr>
+			<tr>
+				<td>(0)(1<sup>&omega;</sup>)(1,1)(2)</td>
+				<td>Y(1,3,2,5,4,3)</td>
+			</tr>
+			<tr>
+				<td>(0)(1<sup>&omega;</sup>)(1,1)(2)(3,1)</td>
+				<td>Y(1,3,2,5,4,3,5)</td>
+			</tr>
+			<tr>
+				<td>(0)(1<sup>&omega;</sup>)(1,1)(2)(3,1,1)</td>
+				<td>Y(1,3,2,5,4,3,5,9)</td>
+			</tr>
+			<tr>
+				<td>(0)(1<sup>&omega;</sup>)(1,1)(2)(3,1<sup>&omega;</sup>)</td>
+				<td>Y(1,3,2,5,4,3,6)</td>
+			</tr>
+			<tr>
+				<td>(0)(1<sup>&omega;</sup>)(1,1)(2)(3,1<sup>&omega;</sup>)(3)</td>
+				<td>Y(1,3,2,5,4,3,6,4)</td>
+			</tr>
+		</table>
+	</body>
+</html>

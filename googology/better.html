@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<style>
+			body {
+				min-height: 100dvh;
+			}
+			table {
+				border-collapse: separate;
+			}
+			
+			th, td {
+				padding-right: 50px;
+				text-align: left;
+			}
+		</style>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<title></title>
+		<meta name="description" content="">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<script src="https://cdn.tailwindcss.com"></script>
+		<script>
+			// thanks gemini for this script :fire:
+			document.addEventListener("click", (event) => {
+				const button = event.target;
+				const buttonClass = Array.from(button.classList).find(cls => cls.startsWith("button"));
+				
+				if (!buttonClass) return;
+
+				const number = buttonClass.replace("button", "");
+
+				const targetTable = document.querySelector(`.table${number}`);
+
+				if (targetTable) {
+					if (targetTable.style.display === "none") {
+						targetTable.style.display = "";
+					} else {
+						targetTable.style.display = "none";
+					}
+				}
+			});
+		</script>
+	</head>
+	<body class="bg-[linear-gradient(to_bottom,#078D70,#26CEAA,#98E8C1,#FFFFFF,#7BADE2,#5049CC,#3D1A78)] font-[Arial] p-6">
+		<p><a class="text-blue-600 underline hover:text-blue-800 visited:text-purple-600" href="/googology">(Back to homepage)</a><br><br></p>
+		<h1 class="text-3xl font-bold">Better Array Notation</h1>
+		<p>
+			(This page does not serve as an introduction to the notation. It just hosts its definition.)<br>
+			Better array notation (BAN) is the sequel to my Boring array notation. It is the collective name of multuple parts (currently 2):
+		</p>
+		<table>
+			<tr>
+				<th>Name</th>
+				<th>Limit Ordinal</th>
+			</tr><tr>
+				<td>Simple Better Array Notation (SBAN)</td>
+				<td>&epsilon;<sub>0</sub></td>
+			</tr><tr>
+				<td>Nested Better Array Notation (NBAN)</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sub>2</sub>)</td>
+			</tr>
+		</table>
+		<p>
+			Better array notation is further split into linear BAN (identical to Chris Bird's and Jonathan Bowers' linear arrays), dimensional BAN, and
+			hyperdimensional BAN.<br><br>
+			Before describing its rules, I'm going to describe a few terms I'll be using.<br>
+			The pilot is the array's first element, and the copilot is the array's second element. All valid arrays must have both a pilot and copilot.<br>
+			The prime is the first non-1 element after the copilot. The coprime is the element directly before the prime. The coprime does not exist if the
+			prime is the third element.<br><br>
+		</p>
+
+
+
+
+
+		<h2 class="text-2xl font-bold">Simple Better Array Notation</h2>
+		<p>
+			Limit ordinal: &epsilon;<sub>0</sub>
+		</p>
+		<h3 class="text-xl font-bold">Rules</h3>
+		<p>
+			Let @ be a string of numbers separated by arbitary separators or arrays.<br>
+			Let p, c, a, and b be the pilot, copilot, and prime, and coprime respectively.<br>
+			Rule 1. [p,c] = p^c<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;If the array has two elements, the result is the pilot raised to the power of the copilot.<br>
+			Rule 2. [@,1] = [@]<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;If the array ends with 1, it can be removed.<br>
+			Rule 2. [p,1,@] = p<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;If the copilot is 1, the result is the pilot.<br>
+			Rule 4. [p,c,1...1,a,@] = [p,p,p...p,[p,c-1,1...1,a,@],a-1,@]<br>
+			&nbsp;&nbsp;&nbsp;&nbsp;If the third element is 1, and 1...1 is an unbroken string of 1s, replace every element before the coprime with the pilot,
+			replace the coprime with a copy of the array with the copilot decreased by 1, and decrement the prime by 1.<br>
+			Let (0) be a comma, A, B be separators, An<sup>x</sup> be x n's separated by A's, and n<sup>x</sup> be x n's separated by commas.<br>
+			Let C be an arbitrary string of numbers, and C' be the expanded version of C with respect to the pilot and copilot. Rules are applied to the first
+			non-1 entry.<br>
+			Rule 5. If A&lt;B, [p,c A 1 B @] = [p,c B @]<br>
+			Rule 6. [p,c(N,@)n,@] = [p,p(N-1,@)p<sup>c</sup>(N-1,@)2(N,@)n-1,@]<br>
+			Rule 7. [p,c(1<sup>x</sup>,m,@)@] = [p,c(p<sup>x</sup>,m-1,@)@]<br>
+			Rule 8. (...(C)...) = (...(C')...)<br><br>
+		</p>
+		<h3 class="text-xl font-bold">Notes</h3>
+		<p>
+			Arrays whose separators are all less than (1) are called linear arrays.<br>
+			Arrays whose separators are all less than (1,2) are called dimensional arrays.<br>
+			All other arrays in SBAN are called multidimensional arrays.<br><br> 
+		</p>
+		<h3 class="text-xl font-bold">Analysis</h3>
+		<button class="button1 bg-white">Expand/Collapse</button>
+		<table class="table1">
+			<tr>
+				<th>Expression</th>
+				<th>Ordinal</th>
+			</tr><tr>
+				<td>[n,n]</td>
+				<td>2</td>
+			</tr><tr>
+				<td>[n,n,2]</td>
+				<td>3</td>
+			</tr><tr>
+				<td>[n,n,3]</td>
+				<td>4</td>
+			</tr><tr>
+				<td>[n,n,n]</td>
+				<td>&omega;</td>
+			</tr><tr>
+				<td>[n,n,1,2]</td>
+				<td>&omega;+1</td>
+			</tr><tr>
+				<td>[n,n,2,2]</td>
+				<td>&omega;+2</td>
+			</tr><tr>
+				<td>[n,n,3,2]</td>
+				<td>&omega;+3</td>
+			</tr><tr>
+				<td>[n,n,1,3]</td>
+				<td>&omega;2</td>
+			</tr><tr>
+				<td>[n,n,2,3]</td>
+				<td>&omega;2+1</td>
+			</tr><tr>
+				<td>[n,n,1,4]</td>
+				<td>&omega;3</td>
+			</tr><tr>
+				<td>[n,n,1,5]</td>
+				<td>&omega;4</td>
+			</tr><tr>
+				<td>[n,n,1,1,2]</td>
+				<td>&omega;<sup>2</sup></td>
+			</tr><tr>
+				<td>[n,n,1,1,3]</td>
+				<td>&omega;<sup>2</sup>2</td>
+			</tr><tr>
+				<td>[n,n,1,1,1,2]</td>
+				<td>&omega;<sup>3</sup></td>
+			</tr><tr>
+				<td>[n,n,1,1,1,1,2]</td>
+				<td>&omega;<sup>4</sup></td>
+			</tr><tr>
+				<td>[n,n(1)2]</td>
+				<td>&omega;<sup>&omega;</sup></td>
+			</tr><tr>
+				<td>[n,n,2(1)2]</td>
+				<td>&omega;<sup>&omega;</sup>+1</td>
+			</tr><tr>
+				<td>[n,n,n(1)2]</td>
+				<td>&omega;<sup>&omega;</sup>+&omega;</td>
+			</tr><tr>
+				<td>[n,n,1,2(1)2]</td>
+				<td>&omega;<sup>&omega;</sup>+&omega;+1</td>
+			</tr><tr>
+				<td>[n,n,1,1,2(1)2]</td>
+				<td>&omega;<sup>&omega;</sup>+&omega;<sup>2</sup></td>
+			</tr><tr>
+				<td>[n,n(1)3]</td>
+				<td>&omega;<sup>&omega;</sup>2</td>
+			</tr><tr>
+				<td>[n,n(1)4]</td>
+				<td>&omega;<sup>&omega;</sup>3</td>
+			</tr><tr>
+				<td>[n,n(1)1,2]</td>
+				<td>&omega;<sup>&omega;+1</sup></td>
+			</tr><tr>
+				<td>[n,n(1)1,3]</td>
+				<td>&omega;<sup>&omega;+1</sup>2</td>
+			</tr><tr>
+				<td>[n,n(1)1,1,2]</td>
+				<td>&omega;<sup>&omega;+2</sup></td>
+			</tr><tr>
+				<td>[n,n(1)1,1,1,2]</td>
+				<td>&omega;<sup>&omega;+3</sup></td>
+			</tr><tr>
+				<td>[n,n(1)1(1)2]</td>
+				<td>&omega;<sup>&omega;2</sup></td>
+			</tr><tr>
+				<td>[n,n(1)1(1)1,2]</td>
+				<td>&omega;<sup>&omega;2+1</sup></td>
+			</tr><tr>
+				<td>[n,n(1)1(1)1(1)2]</td>
+				<td>&omega;<sup>&omega;3</sup></td>
+			</tr><tr>
+				<td>[n,n(1)1(1)1(1)1(1)2]</td>
+				<td>&omega;<sup>&omega;4</sup></td>
+			</tr><tr>
+				<td>[n,n(2)2]</td>
+				<td>&omega;<sup>&omega;<sup>2</sup></sup></td>
+			</tr><tr>
+				<td>[n,n(2)1(1)2]</td>
+				<td>&omega;<sup>&omega;<sup>2</sup>+&omega;</sup></td>
+			</tr><tr>
+				<td>[n,n(2)1(2)2]</td>
+				<td>&omega;<sup>&omega;<sup>2</sup>2</sup></td>
+			</tr><tr>
+				<td>[n,n(3)2]</td>
+				<td>&omega;<sup>&omega;<sup>3</sup></sup></td>
+			</tr><tr>
+				<td>[n,n(4)2]</td>
+				<td>&omega;<sup>&omega;<sup>4</sup></sup></td>
+			</tr><tr>
+				<td>[n,n(1,2)2]</td>
+				<td>&omega;<sup>&omega;<sup>&omega;</sup></sup></td>
+			</tr><tr>
+				<td>[n,n(2,2)2]</td>
+				<td>&omega;<sup>&omega;<sup>&omega;+1</sup></sup></td>
+			</tr><tr>
+				<td>[n,n(1,3)2]</td>
+				<td>&omega;<sup>&omega;<sup>&omega;2</sup></sup></td>
+			</tr><tr>
+				<td>[n,n(1,1,2)2]</td>
+				<td>&omega;<sup>&omega;<sup>&omega;<sup>2</sup></sup></sup></td>
+			</tr><tr>
+				<td>[n,n(1,1,1,2)2]</td>
+				<td>&omega;<sup>&omega;<sup>&omega;<sup>3</sup></sup></sup></td>
+			</tr><tr>
+				<td>[n,n(1(1)2)2]</td>
+				<td>&omega;<sup>&omega;<sup>&omega;<sup>&omega;</sup></sup></sup></td>
+			</tr><tr>
+				<td>[n,n(1(1,2)2)2]</td>
+				<td>&omega;<sup>&omega;<sup>&omega;<sup>&omega;<sup>&omega;</sup></sup></sup></sup></td>
+			</tr><tr>
+				<td>[n,n(1(1(1)2)2)2]</td>
+				<td>&omega;<sup>&omega;<sup>&omega;<sup>&omega;<sup>&omega;<sup>&omega;</sup></sup></sup></sup></sup></td>
+			</tr>
+		</table><br><br>
+
+
+
+
+
+		<h2 class="text-2xl font-bold">Nested Better Array Notation</h2>
+		<p>
+			HUGE THANKS TO MY FRIEND VEE<br>
+			Limit ordinal: &psi;<sub>0</sub>(&Omega;<sub>2</sub>)
+		</p>
+		<h3 class="text-xl font-bold">Rules</h3>
+		<p>
+			Let @ be a string of numbers separated by arbitrary separators or arrays.<br>
+			Let p, c, a, and b be the pilot, copilot, and prime, and coprime respectively.<br>
+			Let /<sup>n</sup> represent n /s concatenated. Let X be any valid array. In the separator /<sup>n</sup>X, X is linked to /<sup>n</sup> if and only
+			if n&gt;1, and X contains a / separator in the highest level. Separators of the form /<sup>n</sup>(.../<sup>b</sup>...) are valid if and only if
+			n&gt;1 and b=1.<br>
+			Let C be an array, and C' the expanded version of the array with respect to the pilot and copilot.<br>
+			Rule 1. (.../(#)1/(#)N@) = (.../(#)1(.../(#)1(...(.../(#)N-1@)...)2/(#)N-1@)2/(#)N-1@) (b nests, if linked all nests include the linked part as well)<br>
+			Rule 2a. (.../(z,@)2) = (.../(z-1,@)1/(z-1,@)...1/(z-1,@)2) (b /(z-1,@)s)<br>
+			Rule 2b. (.../<sup>b</sup>(C)...) = (.../<sup>b</sup>(C')...)<br>
+			Rule 2c. (.../<sup>b</sup>(1/2)...) = (1/<sup>b-1</sup>(1(1/<sup>b-1</sup>(1(1/<sup>b-1</sup>1(...)2)2)2)2)2) (b nests)<br><br>
+		</p>
+		<h3 class="text-xl font-bold">Analysis</h3>
+		<button class="button2 bg-white">Expand/Collapse</button>
+		<table class="table2">
+			<tr>
+				<th>Expression</th>
+				<th>Ordinal</th>
+			</tr><tr>
+				<td>[n,n(1/2)2]</td>
+				<td>&epsilon;<sub>0</sub></td>
+			</tr><tr>
+				<td>[n,n(1,2/2)2]</td>
+				<td>&omega;<sup>&epsilon;<sub>0</sub>&omega;</sup></td>
+			</tr><tr>
+				<td>[n,n(1/3)2]</td>
+				<td>&epsilon;<sub>1</sub></td>
+			</tr><tr>
+				<td>[n,n(1/4)2]</td>
+				<td>&epsilon;<sub>2</sub></td>
+			</tr><tr>
+				<td>[n,n(1/1,2)2]</td>
+				<td>&epsilon;<sub>&omega;</sub></td>
+			</tr><tr>
+				<td>[n,n(1/1(1/2)2)2]</td>
+				<td>&epsilon;<sub>&epsilon;<sub>0</sub></sub></td>
+			</tr><tr>
+				<td>[n,n(1/1(1/1(1/2)2)2)2]</td>
+				<td>&epsilon;<sub>&epsilon;<sub>&epsilon;<sub>0</sub></sub></sub></td>
+			</tr><tr>
+				<td>[n,n(1/1/2)2]</td>
+				<td>&zeta;<sub>0</sub></td>
+			</tr><tr>
+				<td>[n,n(1/2/2)2]</td>
+				<td>&epsilon;<sub>&zeta;<sub>0</sub>+1</sub></td>
+			</tr><tr>
+				<td>[n,n(1/1/1(1/2)2)2]</td>
+				<td>&zeta;<sub>&epsilon;<sub>0</sub></sub></td>
+			</tr><tr>
+				<td>[n,n(1/1/1(1/1/2)2)2]</td>
+				<td>&zeta;<sub>&epsilon;<sub>&zeta;<sub>0</sub></sub></sub></td>
+			</tr><tr>
+				<td>[n,n(1/1/1/2)2]</td>
+				<td>&eta;<sub>0</sub></td>
+			</tr><tr>
+				<td>[n,n(1/1/1/2)2]</td>
+				<td>&phi;(4,0)</td>
+			</tr><tr>
+				<td>[n,n(1/1/1/1/2)2]</td>
+				<td>&phi;(5,0)</td>
+			</tr><tr>
+				<td>[n,n(1/(1)2)2]</td>
+				<td>&phi;(&omega;,0)</td>
+			</tr><tr>
+				<td>[n,n(1/(1)1/2)2]</td>
+				<td>&phi;(&omega;+1,0)</td>
+			</tr><tr>
+				<td>[n,n(1/(1)1/1/2)2]</td>
+				<td>&phi;(&omega;+2,0)</td>
+			</tr><tr>
+				<td>[n,n(1/(1)1/(1)2)2]</td>
+				<td>&phi;(&omega;2,0)</td>
+			</tr><tr>
+				<td>[n,n(1/(1)1/(1)1/(1)2)2]</td>
+				<td>&phi;(&omega;3,0)</td>
+			</tr><tr>
+				<td>[n,n(1/(2)2)2]</td>
+				<td>&phi;(&omega;<sup>2</sup>,0)</td>
+			</tr><tr>
+				<td>[n,n(1/(2)1/2)2]</td>
+				<td>&phi;(&omega;<sup>2</sup>+1,0)</td>
+			</tr><tr>
+				<td>[n,n(1/(2)1/(1)2)2]</td>
+				<td>&phi;(&omega;<sup>2</sup>+&omega;,0)</td>
+			</tr><tr>
+				<td>[n,n(1/(2)1/(2)2)2]</td>
+				<td>&phi;(&omega;<sup>2</sup>2,0)</td>
+			</tr><tr>
+				<td>[n,n(1/(3)2)2]</td>
+				<td>&phi;(&omega;<sup>3</sup>,0)</td>
+			</tr><tr>
+				<td>[n,n(1/(4)2)2]</td>
+				<td>&phi;(&omega;<sup>4</sup>,0)</td>
+			</tr><tr>
+				<td>[n,n(1/(1,2)2)2]</td>
+				<td>&phi;(&omega;<sup>&omega;</sup>,0)</td>
+			</tr><tr>
+				<td>[n,n(1/(1(1/2)2)2)2]</td>
+				<td>&phi;(&epsilon;<sub>0</sub>,0)</td>
+			</tr><tr>
+				<td>[n,n(1/(1(1/(1(1/2)2)2)2)2)2]</td>
+				<td>&phi;(&phi;(&epsilon;<sub>0</sub>,0),0)</td>
+			</tr><tr>
+				<td>[n,n(1//2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;</sup>)</td>
+			</tr><tr>
+				<td>[n,n(1//1/2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;+1</sup>)</td>
+			</tr><tr>
+				<td>[n,n(1//1/(1)2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;+&omega;</sup>)</td>
+			</tr><tr>
+				<td>[n,n(1//1/(1(1/2)2)2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;+&epsilon;<sub>0</sub></sup>)</td>
+			</tr><tr>
+				<td>[n,n(1//1/(1(1//2)2)2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;+&psi;<sub>0</sub>(&Omega;<sup>&Omega;</sup>)</sup>)</td>
+			</tr><tr>
+				<td>[n,n(1//1//2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;2</sup>)</td>
+			</tr><tr>
+				<td>[n,n(1//(1)2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;&omega;</sup>)</td>
+			</tr><tr>
+				<td>[n,n(1//(1(1//2)2)2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;&psi;<sub>0</sub>(&Omega;<sup>&Omega;</sup>)</sup>)</td>
+			</tr><tr>
+				<td>[n,n(1//(1/2)2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;<sup>2</sup></sup>)</td>
+			</tr><tr>
+				<td>[n,n(1//(1(1//(1/2)2)2/2)2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;<sup>2</sup>&psi;<sub>0</sub>(&Omega;<sup>&Omega;<sup>2</sup></sup>)</sup>)</td>
+			</tr><tr>
+				<td>[n,n(1//(1/3)2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;<sup>3</sup></sup>)</td>
+			</tr><tr>
+				<td>[n,n(1//(1/4)2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;<sup>4</sup></sup>)</td>
+			</tr><tr>
+				<td>[n,n(1//(1/1,2)2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;<sup>&omega;</sup></sup>)</td>
+			</tr><tr>
+				<td>[n,n(1//(1/1(1//2)2)2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;<sup>&psi;<sub>0</sub>(&Omega;<sup>&Omega;</sup>)</sup></sup>)</td>
+			</tr><tr>
+				<td>[n,n(1//(1/1/2)2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;<sup>&Omega;</sup></sup></sup>)</td>
+			</tr><tr>
+				<td>[n,n(1//(1/1/1/2)2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;<sup>&Omega;<sup>2</sup></sup></sup></sup>)</td>
+			</tr><tr>
+				<td>[n,n(1//(1/(1)2)2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;<sup>&Omega;<sup>&omega;</sup></sup></sup></sup>)</td>
+			</tr><tr>
+				<td>[n,n(1//(1(1//(1/1/2)2)2)2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;<sup>&Omega;<sup>&psi;<sub>0</sub>(&Omega;<sup>&Omega;<sup>&Omega;</sup></sup>)</sup></sup></sup>)</td>
+			</tr><tr>
+				<td>[n,n(1///2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;<sup>&Omega;<sup>&Omega;</sup></sup></sup>)</td>
+			</tr><tr>
+				<td>[n,n(1///(1/1/2)2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;<sup>&Omega;<sup>&Omega;<sup>&Omega;</sup></sup></sup></sup>)</td>
+			</tr><tr>
+				<td>[n,n(1////2)2]</td>
+				<td>&psi;<sub>0</sub>(&Omega;<sup>&Omega;<sup>&Omega;<sup>&Omega;<sup>&Omega;<sup>&Omega;</sup></sup></sup></sup></sup>)</td>
+			</tr>
+		</table><br><br>
+	</body>
+</html>
